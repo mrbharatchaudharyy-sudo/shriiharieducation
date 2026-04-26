@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import CountryMarquee from '../components/CountryMarquee';
-import UniversityPartners from '../components/UniversityPartners';
+import DestinationTabs from '../components/DestinationTabs';
 
 const stats = [
   { label: 'Successful Placements', value: '5K+', icon: Users },
@@ -235,7 +235,7 @@ export default function Home() {
         </div>
       </section>
 
-      <UniversityPartners />
+      <DestinationTabs />
 
       <CountryMarquee />
 

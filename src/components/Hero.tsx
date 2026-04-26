@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Star, GraduationCap } from 'lucide-react';
+import { ArrowRight, Star, GraduationCap, Plane, Check } from 'lucide-react';
 import { Link, useOutletContext } from 'react-router-dom';
 
 const heroCountries = [
@@ -72,27 +72,27 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h4 className="text-[#f26522] font-bold text-lg mb-4 italic tracking-wide uppercase">Your Gateway to Success</h4>
+              <h4 className="text-[#f26522] font-black text-xl mb-6 italic tracking-[0.2em] uppercase">Start Your Global Journey</h4>
               
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-10 leading-[1.05] tracking-tight">
-                Study <span className="text-[#f26522]">MBBS</span> In <br />
-                <div className="relative h-[1.1em] overflow-hidden inline-flex items-center min-w-[250px] mt-2">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={rotateCountries[index]}
-                      initial={{ y: 60, opacity: 0, rotateX: 45 }}
-                      animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                      exit={{ y: -60, opacity: 0, rotateX: -45 }}
-                      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                      className="text-[#f26522] block w-fit"
-                    >
-                      {rotateCountries[index]}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-                <br />
-                With confidence
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-10 leading-[1.1] tracking-tighter uppercase font-display italic">
+                Study <span className="text-[#f26522]">MBBS</span> <br />
+                <span className="text-white">In Premium Destinations</span>
               </h1>
+
+              <div className="flex flex-wrap gap-4 mb-12">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                  <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                  <span className="text-white font-black text-xs uppercase tracking-widest leading-none">NMC Approved</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                  <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                  <span className="text-white font-black text-xs uppercase tracking-widest leading-none">WHO Recognized</span>
+                </div>
+              </div>
+
+              <p className="text-lg text-white/50 font-medium max-w-lg mb-12 leading-relaxed">
+                Empowering medical aspirants with direct admissions to world-class medical universities recognized by NMC & WHO.
+              </p>
 
               {/* Country Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10 max-w-lg">
@@ -101,11 +101,8 @@ export default function Hero() {
                     key={country.name}
                     to={`/countries/${country.id}`}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                      className="flex items-center gap-3 bg-white/95 backdrop-blur-md px-3 py-2.5 rounded-xl shadow-lg border border-white/20 transition-transform hover:scale-105 cursor-pointer group h-full"
+                    <div
+                      className="flex items-center gap-3 bg-white/95 backdrop-blur-md px-3 py-2.5 rounded-xl shadow-lg border border-white/20 cursor-pointer group h-full"
                     >
                       <img 
                         src={`https://flagcdn.com/w80/${country.code.toLowerCase()}.png`} 
@@ -116,22 +113,22 @@ export default function Hero() {
                       <span className="text-[10px] sm:text-xs font-bold text-gray-900 group-hover:text-[#f26522] transition-colors uppercase tracking-tight truncate">
                         {country.name}
                       </span>
-                    </motion.div>
+                    </div>
                   </Link>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 mt-2">
-                <Link
-                  to="/book-counseling"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#f26522] hover:bg-white text-white hover:text-[#0b1c3f] font-bold rounded-xl text-lg shadow-xl transition-all hover:scale-105 active:scale-95 group border-2 border-[#f26522]"
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <button
+                  onClick={onOpenBooking}
+                  className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-[#f26522] hover:bg-white text-white hover:text-[#0b1c3f] font-black rounded-2xl text-xl shadow-[0_20px_40px_-10px_rgba(242,101,34,0.5)] transition-all active:scale-95 group border-2 border-[#f26522] uppercase tracking-widest"
                 >
-                  Get Free Consultation
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
+                  Enquiry Now
+                  <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                </button>
                 <Link
                   to="/countries"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white/10 hover:bg-white text-white hover:text-[#0b1c3f] font-bold rounded-xl text-lg shadow-xl transition-all hover:scale-105 active:scale-95 group border-2 border-white/20"
+                  className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white/5 hover:bg-white text-white hover:text-[#0b1c3f] font-black rounded-2xl text-xl shadow-xl transition-all active:scale-95 group border-2 border-white/10 backdrop-blur-xl uppercase tracking-widest"
                 >
                   MBBS Destination
                 </Link>
@@ -139,31 +136,48 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Image */}
-          <div className="lg:w-1/2 relative h-full flex justify-center items-center lg:items-end pt-12 lg:pt-0">
-             <motion.div
-               initial={{ opacity: 0, scale: 0.9, y: 50 }}
-               animate={{ opacity: 1, scale: 1, y: 0 }}
-               transition={{ duration: 1, ease: 'easeOut' }}
-               className="relative z-10 w-full max-w-[450px]"
-             >
-                {/* Decorative glow behind portal */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] aspect-square bg-[#f26522]/10 rounded-full blur-[120px] -z-10" />
-                
-                {/* Arch Portal Container */}
-                <div className="relative bg-white rounded-t-full overflow-hidden aspect-[1/1.5] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] border-[14px] border-white ring-1 ring-white/20">
-                  {/* Internal background for the arch */}
-                  <div className="absolute inset-0 bg-white"></div>
-                  
-                  {/* Main Student Image */}
-                  <img 
-                    src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=800" 
-                    alt="Indian Female MBBS Student" 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[94%] w-full object-contain z-10 scale-110 origin-bottom brightness-[1.02]"
-                    referrerPolicy="no-referrer"
-                  />
+          {/* Right Visuals - Collage Style */}
+          <div className="lg:w-1/2 flex items-center justify-center min-h-[600px]">
+            <div className="relative w-full flex items-center justify-center h-[500px] md:h-[700px]">
+              {/* Collage Elements */}
+              <div className="relative z-10 w-full flex items-center justify-center -space-x-16 md:-space-x-24 -translate-x-[30px]">
+                {/* Uzbekistan Arch */}
+                <div 
+                  style={{ opacity: 1, transform: 'rotate(-15deg) translate(-70px, 15px)' }}
+                  className="w-[100px] md:w-[200px] aspect-[4/6] rounded-t-full overflow-hidden border-4 md:border-8 border-white/5 shadow-2xl z-10 relative group bg-slate-900"
+                >
+                  <img src="https://images.unsplash.com/photo-1528154291023-e60315a176d0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Uzbekistan" referrerPolicy="no-referrer" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 </div>
-             </motion.div>
+
+                {/* Russia Arch (Center Focus) */}
+                <div 
+                   style={{ opacity: 1, transform: 'scale(1.3) translateY(-25px)' }}
+                   className="w-[180px] md:w-[380px] aspect-[4/5.5] rounded-t-full overflow-hidden border-4 md:border-[12px] border-[#f26522] shadow-[0_0_60px_rgba(242,101,34,0.5)] z-30 relative group bg-slate-900"
+                >
+                  {/* Portal Inner Shimmer */}
+                  <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/20 to-transparent z-20 pointer-events-none" />
+                  
+                  <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Russia" referrerPolicy="no-referrer" />
+                  
+                  {/* Portal Depth Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1c3f] via-transparent to-transparent opacity-80 z-10"></div>
+                  <div className="absolute inset-0 ring-inset ring-1 ring-white/30 z-20 rounded-t-full"></div>
+                </div>
+
+                {/* Georgia Arch (Moved Further Right) */}
+                <div 
+                  style={{ opacity: 1, transform: 'rotate(15deg) translate(100px, 20px)' }}
+                  className="w-[100px] md:w-[200px] aspect-[4/6] rounded-t-full overflow-hidden border-4 md:border-8 border-white/5 shadow-2xl z-20 relative group bg-slate-900"
+                >
+                  <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985b?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Georgia" referrerPolicy="no-referrer" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                </div>
+              </div>
+
+              {/* Background Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#f26522]/5 rounded-full blur-[100px] z-0"></div>
+            </div>
           </div>
         </div>
       </div>

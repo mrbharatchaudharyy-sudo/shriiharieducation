@@ -431,80 +431,56 @@ const Contact = () => {
       {/* Visual Header Section */}
       <section className="relative h-[65vh] md:h-[75vh] flex items-center justify-center overflow-hidden bg-white">
         <div className="absolute inset-0 z-0">
-          {/* Animated Mesh Gradient */}
-          <div className="absolute inset-0 opacity-60">
-            <motion.div 
-              animate={{ 
-                scale: [1, 1.2, 1],
-                x: [0, 40, 0],
-                y: [0, -30, 0]
-              }}
-              transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-[-10%] left-[-10%] w-[70%] h-[70%] bg-blue-50 rounded-full blur-[120px] mix-blend-multiply"
-            />
-            <motion.div 
-              animate={{ 
-                scale: [1, 1.15, 1],
-                x: [0, -50, 0],
-                y: [0, 40, 0]
-              }}
-              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-orange-50 rounded-full blur-[140px] mix-blend-multiply"
-            />
-            <motion.div 
-              animate={{ 
-                scale: [1, 1.3, 1],
-                x: [0, 60, 0],
-                y: [0, 50, 0]
-              }}
-              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-[20%] right-[10%] w-[50%] h-[50%] bg-indigo-50 rounded-full blur-[130px] mix-blend-multiply"
-            />
-          </div>
-          
           {/* Subtle Grid Pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(#0b1c3f_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
           
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-[#fcfdfd]"></div>
+          {/* Very faint glows for depth */}
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-50 rounded-full blur-[100px] opacity-30"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-50 rounded-full blur-[100px] opacity-30"></div>
+          
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#fcfdfd]"></div>
         </div>
         
         <div className="relative z-10 text-center px-4 w-full max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-center"
           >
-            <span className="text-[#f26522] font-black uppercase tracking-[0.3em] text-xs mb-6 px-5 py-2 bg-[#f26522]/5 rounded-full border border-[#f26522]/10 backdrop-blur-sm">
-              Connect With Us
+            <span className="text-[#f26522] font-black uppercase tracking-[0.2em] text-[10px] md:text-xs mb-10 px-6 py-2.5 bg-[#f26522]/5 rounded-full border border-[#f26522]/10">
+              CONNECT WITH US
             </span>
-            <h1 className="text-4xl md:text-7xl font-black text-[#0b1c3f] tracking-tighter leading-relaxed mb-1 uppercase font-display">
+            
+            <h1 className="text-5xl md:text-8xl font-black text-[#0b1c3f] tracking-tighter mb-4 uppercase font-display">
               DON'T BE SHY.
             </h1>
-            <span className="text-2xl md:text-4xl font-black text-[#0b1c3f]/30 tracking-widest uppercase mb-4 font-display">
+            
+            <span className="text-2xl md:text-4xl font-black text-gray-300 tracking-widest uppercase mb-6 font-display">
               SAY
             </span>
             
             <div className="flex flex-col items-center">
-              <div className="relative h-20 md:h-28 flex flex-col items-center justify-center">
+              <div className="relative h-24 md:h-36 flex flex-col items-center justify-center">
                 <AnimatePresence mode="wait">
                   <motion.div 
                     key={index}
-                    initial={{ opacity: 0, filter: "blur(8px)", y: 15 }}
-                    animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                    exit={{ opacity: 0, filter: "blur(8px)", y: -15 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="text-6xl md:text-8xl font-black text-[#f26522] tracking-tight font-display"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="text-7xl md:text-9xl font-black text-[#f26522] tracking-tight font-display leading-tight"
                   >
                     {greetings[index]}
                   </motion.div>
                 </AnimatePresence>
+                
                 {/* Decorative underline */}
                 <motion.div 
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="h-2 w-32 md:w-64 bg-[#f26522] rounded-full mt-4 shadow-lg shadow-[#f26522]/20"
+                  initial={{ width: 0 }}
+                  animate={{ width: "110%" }}
+                  transition={{ delay: 0.2 }}
+                  className="h-2 w-full bg-[#f26522] rounded-full mt-4"
                 />
               </div>
             </div>
@@ -520,7 +496,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 md:p-14 rounded-[3rem] shadow-[0_32px_80px_-16px_rgba(11,28,63,0.08)] order-2 lg:order-1 border border-gray-100 flex flex-col h-full hover:shadow-[0_48px_100px_-24px_rgba(11,28,63,0.12)] transition-shadow duration-500"
+              className="bg-white p-8 md:p-14 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(11,28,63,0.1)] order-2 lg:order-1 border border-gray-100 flex flex-col h-full"
             >
               <div className="mb-10">
                 <h3 className="text-3xl font-black text-[#0b1c3f] mb-2 tracking-tight">Post Your Query</h3>
