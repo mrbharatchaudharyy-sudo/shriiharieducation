@@ -28,7 +28,7 @@ const countryData = [
     id: 'kazakhstan',
     name: 'Kazakhstan',
     flag: 'https://flagcdn.com/w40/kz.png',
-    image: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1558588942-930faae5a389?auto=format&fit=crop&q=80&w=800',
     fees: '₹3 - 5 Lakh / Year',
     duration: '6 Years',
     features: ['NMC Approved', 'Safe & Friendly Environment', 'Modern Hospitals', 'Top-Ranked Universities'],
@@ -38,7 +38,7 @@ const countryData = [
     id: 'kyrgyzstan',
     name: 'Kyrgyzstan',
     flag: 'https://flagcdn.com/w40/kg.png',
-    image: 'https://images.unsplash.com/photo-1569429538303-34e857492cff?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=800',
     fees: '₹2 - 3.5 Lakh / Year',
     duration: '6 Years',
     features: ['NMC Approved', 'Low Cost of Living', 'Large Indian Community', 'WHO Recognized'],
@@ -48,7 +48,7 @@ const countryData = [
     id: 'georgia',
     name: 'Georgia',
     flag: 'https://flagcdn.com/w40/ge.png',
-    image: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3?auto=format&fit=crop&q=80&w=800',
     fees: '₹3.5 - 6 Lakh / Year',
     duration: '6 Years',
     features: ['NMC Approved', 'European Standards', 'Safe for International Students', 'No Entrance Exam'],
@@ -93,95 +93,97 @@ const DestinationTabs = () => {
         </div>
 
         {/* Custom Tab Bar */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-6 mb-24">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-24">
           {tabs.map((tab) => (
             <button
               key={tab.name}
               onClick={() => setActiveTab(tab.name)}
-              className={`px-10 py-4 rounded-full text-xs font-black uppercase tracking-[0.2em] transition-all duration-500 border-2 ${
+              className={`min-w-[140px] md:min-w-[180px] flex items-center justify-center gap-3 px-6 py-4 rounded-xl text-[10px] md:text-[11px] font-black uppercase tracking-[0.25em] transition-all duration-300 border ${
                 activeTab === tab.name 
-                  ? 'bg-[#f26522] text-white border-[#f26522] shadow-[0_15px_40px_rgba(242,101,34,0.4)] scale-110' 
-                  : 'bg-white/5 text-white/40 border-white/10 hover:border-white/30 backdrop-blur-xl'
-              } flex items-center gap-3 group`}
+                  ? 'bg-[#f26522] text-white border-[#f26522] shadow-[0_15px_40px_rgba(242,101,34,0.4)]' 
+                  : 'bg-white/5 text-white/40 border-white/10 hover:border-white/20 hover:text-white/70'
+              } group`}
             >
-              {tab.flag && <img src={tab.flag} alt="" className="w-6 h-4 object-cover rounded-sm group-hover:scale-125 transition-transform" />}
+              {tab.flag && <img src={tab.flag} alt="" className="w-6 h-4 object-cover rounded-sm group-hover:scale-110 transition-transform shadow-sm" />}
               {tab.name}
             </button>
           ))}
         </div>
 
-        {/* Destination Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4 md:px-8">
-          <AnimatePresence mode="popLayout">
+        {/* Destination Grid - Responsive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 xl:gap-5 px-4 md:px-8 items-stretch pb-12">
+          <AnimatePresence mode="wait">
             {filteredCountries.map((country) => (
               <motion.div
                 key={country.id}
-                layout
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="group bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col h-full hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-500"
+                transition={{ duration: 0.4 }}
+                className="group bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col w-full h-auto min-h-[500px] hover:shadow-[0_40px_80px_rgba(0,0,0,0.25)] transition-all duration-500"
               >
                 {/* Image Section */}
-                <div className="relative aspect-[16/11] overflow-hidden m-2 rounded-[1.5rem]">
+                <div className="relative aspect-[16/11] overflow-hidden m-3 rounded-[2rem]">
                   <img 
                     src={country.image} 
                     alt={country.name}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
                 </div>
 
                 {/* Content Section */}
                 <div className="px-6 py-6 flex flex-col flex-grow">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-black text-[#0b1c3f] tracking-tight group-hover:text-[#f26522] transition-colors">{country.name}</h3>
-                    <img 
-                      src={country.flag} 
-                      alt="" 
-                      className="w-7 h-4.5 object-cover rounded shadow-sm border border-gray-100" 
-                    />
+                  <div className="flex items-center justify-between mb-5">
+                    <h3 className="text-xl font-black text-[#0b1c3f] tracking-tight group-hover:text-[#f26522] transition-colors uppercase italic">{country.name}</h3>
+                    <div className="p-1.5 bg-gray-50 rounded-lg border border-gray-100">
+                      <img 
+                        src={country.flag} 
+                        alt="" 
+                        className="w-6 h-4 object-cover rounded shadow-sm" 
+                      />
+                    </div>
                   </div>
                   
                   {/* Features List */}
-                  <div className="space-y-3.5 mb-8">
+                  <div className="space-y-3 mb-8">
                     <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0">
-                        <Check className="w-2.5 h-2.5 text-green-500" strokeWidth={5} />
+                      <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0 border border-green-100">
+                        <Check className="w-2.5 h-2.5 text-green-600" strokeWidth={4} />
                       </div>
-                      <span className="text-sm text-gray-500 font-bold uppercase tracking-tight">Fees: <span className="text-gray-900">{country.fees.split('/')[0]}</span></span>
+                      <div className="flex flex-col">
+                        <span className="text-[9px] text-gray-400 font-black uppercase tracking-widest leading-none mb-1">Fees</span>
+                        <span className="text-xs text-[#0b1c3f] font-black">{country.fees.split('/')[0]}</span>
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0">
-                        <Check className="w-2.5 h-2.5 text-green-500" strokeWidth={5} />
+                      <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0 border border-green-100">
+                        <Check className="w-2.5 h-2.5 text-green-600" strokeWidth={4} />
                       </div>
-                      <span className="text-sm text-gray-500 font-bold uppercase tracking-tight">Duration: <span className="text-gray-900">{country.duration}</span></span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0">
-                        <Check className="w-2.5 h-2.5 text-green-500" strokeWidth={5} />
+                      <div className="flex flex-col">
+                        <span className="text-[9px] text-gray-400 font-black uppercase tracking-widest leading-none mb-1">Duration</span>
+                        <span className="text-xs text-[#0b1c3f] font-black">{country.duration}</span>
                       </div>
-                      <span className="text-sm text-gray-500 font-bold uppercase tracking-tight">NMC Approved</span>
                     </div>
-
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0">
-                        <Check className="w-2.5 h-2.5 text-green-500" strokeWidth={5} />
+ 
+                    {country.features.slice(0, 2).map((feature, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0 border border-green-100">
+                          <Check className="w-2.5 h-2.5 text-green-600" strokeWidth={4} />
+                        </div>
+                        <span className="text-xs text-[#0b1c3f] font-black uppercase tracking-tight">{feature}</span>
                       </div>
-                      <span className="text-sm text-gray-500 font-bold uppercase tracking-tight">Globally Recognized</span>
-                    </div>
+                    ))}
                   </div>
                   
                   <Link 
                     to={`/countries/${country.id}`}
-                    className="mt-auto w-full py-4 bg-[#0b1c3f] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-[#f26522] transition-all shadow-lg hover:shadow-[#f26522]/20 active:scale-95 group/btn"
+                    className="mt-auto w-full py-4 bg-[#0b1c3f] text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.25em] flex items-center justify-center gap-3 hover:bg-[#f26522] transition-all shadow-xl hover:shadow-[#f26522]/30 active:scale-95 group/btn border-2 border-[#0b1c3f] hover:border-[#f26522]"
                   >
                     View Details
-                    <ChevronRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </motion.div>

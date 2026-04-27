@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Star, GraduationCap, Plane, Check } from 'lucide-react';
+import { ArrowRight, Star, GraduationCap, Plane, Check, Users } from 'lucide-react';
 import { Link, useOutletContext } from 'react-router-dom';
 
 const heroCountries = [
@@ -18,7 +18,38 @@ const heroCountries = [
   { id: 'uzbekistan', name: 'Uzbekistan', code: 'UZ' },
 ];
 
-const rotateCountries = ["Russia", "Georgia", "Kazakhstan", "Kyrgyzstan", "Philippines", "China", "Uzbekistan"];
+const rotateCountries = [
+  { 
+    name: "Russia", 
+    code: "ru", 
+    image: "https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=800" 
+  },
+  { 
+    name: "Georgia", 
+    code: "ge", 
+    image: "https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3?auto=format&fit=crop&q=80&w=800" 
+  },
+  { 
+    name: "Kazakhstan", 
+    code: "kz", 
+    image: "https://images.unsplash.com/photo-1558588942-930faae5a389?auto=format&fit=crop&q=80&w=800" 
+  },
+  { 
+    name: "Kyrgyzstan", 
+    code: "kg", 
+    image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=800" 
+  },
+  { 
+    name: "Philippines", 
+    code: "ph", 
+    image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&q=80&w=800" 
+  },
+  { 
+    name: "Singapore", 
+    code: "sg", 
+    image: "https://images.unsplash.com/photo-1525625232754-557d9f505836?auto=format&fit=crop&q=80&w=800" 
+  }
+];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -27,9 +58,11 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % rotateCountries.length);
-    }, 2000);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
+
+  const currentCountry = rotateCountries[index];
 
   return (
     <div className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-br from-[#0b1c3f] via-[#1a2b5d] to-[#0f172a] pt-24 lg:pt-32">
@@ -62,7 +95,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* Left Content */}
@@ -136,50 +169,92 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Visuals - Collage Style */}
-          <div className="lg:w-1/2 flex items-center justify-center min-h-[600px]">
-            <div className="relative w-full flex items-center justify-center h-[500px] md:h-[700px]">
-              {/* Collage Elements */}
-              <div className="relative z-10 w-full flex items-center justify-center -space-x-16 md:-space-x-24 -translate-x-[30px]">
-                {/* Uzbekistan Arch */}
-                <div 
-                  style={{ opacity: 1, transform: 'rotate(-15deg) translate(-70px, 15px)' }}
-                  className="w-[100px] md:w-[200px] aspect-[4/6] rounded-t-full overflow-hidden border-4 md:border-8 border-white/5 shadow-2xl z-10 relative group bg-slate-900"
-                >
-                  <img src="https://images.unsplash.com/photo-1528154291023-e60315a176d0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Uzbekistan" referrerPolicy="no-referrer" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                </div>
-
-                {/* Russia Arch (Center Focus) */}
-                <div 
-                   style={{ opacity: 1, transform: 'scale(1.3) translateY(-25px)' }}
-                   className="w-[180px] md:w-[380px] aspect-[4/5.5] rounded-t-full overflow-hidden border-4 md:border-[12px] border-[#f26522] shadow-[0_0_60px_rgba(242,101,34,0.5)] z-30 relative group bg-slate-900"
-                >
-                  {/* Portal Inner Shimmer */}
-                  <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/20 to-transparent z-20 pointer-events-none" />
-                  
-                  <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Russia" referrerPolicy="no-referrer" />
-                  
-                  {/* Portal Depth Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1c3f] via-transparent to-transparent opacity-80 z-10"></div>
-                  <div className="absolute inset-0 ring-inset ring-1 ring-white/30 z-20 rounded-t-full"></div>
-                </div>
-
-                {/* Georgia Arch (Moved Further Right) */}
-                <div 
-                  style={{ opacity: 1, transform: 'rotate(15deg) translate(100px, 20px)' }}
-                  className="w-[100px] md:w-[200px] aspect-[4/6] rounded-t-full overflow-hidden border-4 md:border-8 border-white/5 shadow-2xl z-20 relative group bg-slate-900"
-                >
-                  <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985b?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Georgia" referrerPolicy="no-referrer" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                </div>
+          {/* Right Visuals - Sophisticated Arched Portal */}
+          <div className="lg:w-1/2 flex items-center justify-center min-h-[600px] relative">
+            <div className="relative w-full flex items-center justify-center">
+              
+              {/* Central Premium Arched Portal */}
+              <div className="w-[300px] md:w-[460px] aspect-[4/6] z-20 relative">
+                <AnimatePresence mode="wait">
+                  <motion.div 
+                    key={currentCountry.name}
+                    initial={{ opacity: 0, scale: 0.95, y: 40 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 1.05, y: -40 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-full h-full rounded-t-full rounded-b-[5rem] overflow-hidden border-[12px] md:border-[20px] border-[#f26522] shadow-[0_80px_150px_rgba(242,101,34,0.3)] bg-slate-900 group relative"
+                  >
+                    {/* Internal Light Glare */}
+                    <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-white/20 to-transparent pointer-events-none z-10"></div>
+                    
+                    <motion.img 
+                      initial={{ scale: 1.1 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 2 }}
+                      src={currentCountry.image} 
+                      className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000" 
+                      alt={currentCountry.name} 
+                      referrerPolicy="no-referrer" 
+                    />
+                    
+                    {/* Content Overlay - Refined Branding */}
+                    <div className="absolute inset-x-0 bottom-0 p-12 bg-gradient-to-t from-[#0b1c3f] via-[#0b1c3f]/90 to-transparent">
+                      <div className="flex flex-col items-center">
+                        <motion.div 
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.5, type: 'spring' }}
+                          className="mb-5 p-2 bg-white rounded-xl shadow-2xl"
+                        >
+                          <img 
+                            src={`https://flagcdn.com/w80/${currentCountry.code.toLowerCase()}.png`} 
+                            alt="" 
+                            className="w-10 h-7 object-cover rounded-sm" 
+                            referrerPolicy="no-referrer"
+                          />
+                        </motion.div>
+                        <motion.h3 
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.6 }}
+                          className="text-white text-5xl md:text-6xl font-black tracking-tighter uppercase italic leading-none"
+                        >
+                          {currentCountry.name}
+                        </motion.h3>
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          animate={{ width: 60 }}
+                          transition={{ delay: 0.8, duration: 1 }}
+                          className="h-1 bg-[#f26522] mt-4 mb-3"
+                        />
+                        <span className="text-white/60 text-[10px] font-black uppercase tracking-[0.5em] italic">Top Global Destination</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
-
-              {/* Background Glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#f26522]/5 rounded-full blur-[100px] z-0"></div>
             </div>
           </div>
         </div>
+
+        {/* Re-added Airplane Animation */}
+        <motion.div 
+          animate={{ 
+            x: [-200, 1800],
+            y: [200, -400],
+            rotate: [15, 5],
+            opacity: [0, 0.4, 0.4, 0]
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity, 
+            ease: "linear",
+            delay: 1
+          }}
+          className="absolute bottom-20 left-0 z-0 text-white pointer-events-none select-none"
+        >
+          <Plane size={150} strokeWidth={0.2} fill="white" fillOpacity={0.05} />
+        </motion.div>
       </div>
     </div>
   );

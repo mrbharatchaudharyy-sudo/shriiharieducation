@@ -32,7 +32,7 @@ export default function Navbar({ onOpenBooking }: { onOpenBooking?: () => void }
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Top Bar */}
       <div className="bg-[#0b1c3f] text-white py-2 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-xs font-medium">
+        <div className="max-w-[1500px] mx-auto flex justify-between items-center text-xs font-medium">
           <div className="flex items-center gap-6">
             <a href="tel:+919924495268" className="flex items-center gap-2 hover:text-blue-200 transition-colors">
               <Phone size={14} fill="currentColor" className="text-white" />
@@ -55,28 +55,26 @@ export default function Navbar({ onOpenBooking }: { onOpenBooking?: () => void }
 
       {/* Main Nav */}
       <nav className="bg-white py-3 border-b border-gray-100 shadow-sm relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-8">
-              <Link to="/" className="flex items-center gap-2">
-                <div className="flex items-center">
-                   <img 
-                    src="https://shriiharieducation.com/wp-content/uploads/2025/12/SHRIIHARI-LOGO.png" 
-                    alt="Shriihari Education Logo" 
-                    className="h-10 w-auto object-contain"
-                    referrerPolicy="no-referrer"
-                   />
-                </div>
+            <div className="flex items-center gap-6 md:gap-8">
+              <Link to="/" className="flex items-center">
+                <img 
+                  src="https://shriiharieducation.com/wp-content/uploads/2025/12/SHRIIHARI-LOGO.png" 
+                  alt="Shriihari Education Logo" 
+                  className="h-9 md:h-11 w-auto object-contain"
+                  referrerPolicy="no-referrer"
+                />
               </Link>
 
               <div className="relative">
                 <button 
                   onClick={() => setShowExplore(!showExplore)}
                   className={cn(
-                    "hidden lg:flex items-center gap-2 px-4 py-2 border rounded-lg text-sm font-bold transition-all",
+                    "hidden lg:flex items-center gap-3 px-6 py-2.5 border rounded-xl text-sm font-bold transition-all duration-300",
                     showExplore 
                       ? "bg-gray-50 border-[#f26522] text-[#f26522]" 
-                      : "border-gray-300 text-gray-800 hover:bg-gray-50"
+                      : "border-gray-300 text-gray-700 hover:bg-gray-50 bg-white"
                   )}
                 >
                   Explore Universities
@@ -92,7 +90,7 @@ export default function Navbar({ onOpenBooking }: { onOpenBooking?: () => void }
                       exit={{ opacity: 0, y: 10 }}
                       className="fixed left-0 right-0 top-[110px] bg-white border-y border-gray-100 shadow-2xl z-40 hidden lg:block"
                     >
-                      <div className="max-w-7xl mx-auto flex min-h-[500px]">
+                      <div className="max-w-[1500px] mx-auto flex min-h-[500px]">
                         {/* Left Side: Countries */}
                         <div className="w-1/3 border-r border-gray-100 p-8 space-y-1 max-h-[80vh] overflow-y-auto custom-scrollbar">
                            {COUNTRIES.map((country) => (
@@ -153,7 +151,7 @@ export default function Navbar({ onOpenBooking }: { onOpenBooking?: () => void }
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-7">
               {navLinks.map((link) => {
                 const isStudyAbroad = link.dropdownType === 'study';
                 const isDestinations = link.hasDropdown && !isStudyAbroad;
@@ -175,12 +173,12 @@ export default function Navbar({ onOpenBooking }: { onOpenBooking?: () => void }
                     <Link
                       to={link.path}
                       className={cn(
-                        "text-[13px] font-semibold transition-colors hover:text-[#f26522] flex items-center gap-1",
-                        location.pathname === link.path ? "text-[#f26522]" : "text-gray-700"
+                        "text-[14px] font-bold transition-colors hover:text-[#f26522] flex items-center gap-1.5 whitespace-nowrap",
+                        location.pathname === link.path ? "text-[#f26522]" : "text-[#0b1c3f]"
                       )}
                     >
                       {link.name}
-                      {link.hasDropdown && <ChevronDown size={14} className={cn("transition-transform", isDropdownOpen && "rotate-180")} />}
+                      {link.hasDropdown && <ChevronDown size={14} className={cn("transition-transform duration-300", isDropdownOpen && "rotate-180")} strokeWidth={2.5} />}
                     </Link>
 
                     {/* MBBS Destination Dropdown */}

@@ -25,7 +25,7 @@ export default function Footer() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/5">
           {/* Left Section: Brand & Primary Contact */}
           <div className="lg:col-span-4 space-y-8 lg:border-r lg:border-white/5 lg:pr-12">

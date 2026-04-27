@@ -8,7 +8,7 @@ export default function CountryMarquee() {
 
   return (
     <section className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <h2 className="text-[#002147] text-3xl md:text-4xl font-black mb-4">
           Our Services – Study Abroad Countries
         </h2>

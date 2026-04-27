@@ -9,6 +9,8 @@ import {
 import Hero from '../components/Hero';
 import CountryMarquee from '../components/CountryMarquee';
 import DestinationTabs from '../components/DestinationTabs';
+import { WhyStudyAbroad } from '../components/WhyStudyAbroad';
+import FeaturedIn from '../components/FeaturedIn';
 
 const stats = [
   { label: 'Successful Placements', value: '5K+', icon: Users },
@@ -22,10 +24,24 @@ export default function Home() {
     <div className="bg-white">
       <Hero />
 
+      {/* Decorative Line Separator */}
+      <div className="relative h-px w-full overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+        <motion.div 
+          animate={{ x: [-1000, 1000] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-[#f26522]/20 to-transparent w-full opacity-50"
+        />
+      </div>
+
       {/* Stats Bar */}
-      <section className="bg-white border-b border-gray-100 shadow-sm relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4">
+      <section className="bg-white relative z-20">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 py-10 relative">
+          {/* Vertical Decorative Accents */}
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-100 to-transparent"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-100 to-transparent"></div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 px-4">
             
             <div className="flex items-center gap-6 group">
               <div className="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-[#f26522] transition-colors group-hover:bg-[#0b1c3f] group-hover:text-white">
@@ -77,6 +93,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Decorative Separator */}
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
+      </div>
+
+      <FeaturedIn />
+
+      {/* Decorative Separator */}
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
+      </div>
+
       {/* Why Choose Us */}
       <section className="py-24 bg-gray-50 overflow-hidden relative">
         {/* Background Vector - Refined Single Line Style */}
@@ -105,7 +133,7 @@ export default function Home() {
             <circle cx="500" cy="280" r="4" fill="currentColor" />
           </svg>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -146,16 +174,20 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="aspect-square rounded-full overflow-hidden shadow-2xl border-[16px] border-white max-w-[500px] mx-auto relative z-10">
                 <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
-                  alt="Students Studying"
+                  src="https://lh3.googleusercontent.com/p/AF1QipO8XBP91FHsWFf9XXom5ZgZ4g9OmayJntPSfyrs=w1200-h1200-n-k-no-nu"
+                  alt="Our Expertise - Shriihari Education"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-[200px]">
+              
+              {/* Circular Decorative element */}
+              <div className="absolute -inset-4 border-2 border-dashed border-[#f26522]/20 rounded-full animate-[spin_20s_linear_infinite] pointer-events-none"></div>
+
+              {/* Floating Badge - repositioned for round shape */}
+              <div className="absolute bottom-4 -left-4 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 max-w-[200px] z-20">
                 <div className="text-4xl font-bold text-[#0b1c3f] mb-1">15+</div>
                 <div className="text-gray-600 text-sm font-semibold uppercase tracking-tight">Years of Academic Success</div>
               </div>
@@ -167,7 +199,7 @@ export default function Home() {
       {/* Student Showcase Section */}
       <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-[#f26522]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 opacity-50"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
               <div className="relative group">
@@ -236,17 +268,26 @@ export default function Home() {
       </section>
 
       <DestinationTabs />
-
-      <CountryMarquee />
+      <WhyStudyAbroad />
+      <section className="bg-gray-50 py-24 relative overflow-hidden">
+        {/* Decorative Separator */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+        
+        <CountryMarquee />
+      </section>
 
       {/* Student Feedback Section */}
       <section className="py-24 bg-gray-50/50 overflow-hidden relative">
+        {/* Decorative Separator */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+        <div className="absolute top-1/2 left-0 w-px h-64 bg-gradient-to-b from-transparent via-[#f26522]/10 to-transparent"></div>
+        <div className="absolute top-1/2 right-0 w-px h-64 bg-gradient-to-b from-transparent via-[#f26522]/10 to-transparent"></div>
         {/* Background Decorative Quote */}
         <div className="absolute top-10 left-10 text-gray-200/40 select-none pointer-events-none">
           <Quote size={400} className="fill-current" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-end justify-between gap-12 mb-20">
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 mb-6">
@@ -364,7 +405,9 @@ export default function Home() {
       
       {/* Dedicated Booking Section (The "Ad") */}
       <section className="py-24 bg-white overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Decorative Separator */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
