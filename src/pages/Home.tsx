@@ -176,7 +176,7 @@ export default function Home() {
             >
               <div className="aspect-square rounded-full overflow-hidden shadow-2xl border-[16px] border-white max-w-[500px] mx-auto relative z-10">
                 <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipO8XBP91FHsWFf9XXom5ZgZ4g9OmayJntPSfyrs=w1200-h1200-n-k-no-nu"
+                  src="https://shriiharieducation.com/wp-content/uploads/2026/04/shriihari-980x653.jpeg"
                   alt="Our Expertise - Shriihari Education"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
